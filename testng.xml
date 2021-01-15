@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="HKPOSS页面自动化测试">
+    <test verbose="2" preserve-order="true" name="D:/eclipse_workspace/com.hkpossuities">
+        <classes>
+            <class name="org.example.testcases.LoginCase"/>
+            <class name="org.example.testcases.UserManagerCase"/>
+                  </classes>
+    </test>
+<!--自动生成测试报告-->
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+</suite>

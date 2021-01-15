@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="D:/eclipse_workspace/com.hkpossuities"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="3.194">
+  <properties />
+  
+  
+            <testcase name="testGetUser" time="3.194" classname="org.example.testcases.UserManagerCase" />
+      
+</testsuite>

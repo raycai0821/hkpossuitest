@@ -1,0 +1,7 @@
+1.结构介绍
+Factory中主要放elements元素,以及每个元素的操作方法
+
+Object中封装了factory中元素方法
+
+case使用object中封装方法组成业务测试逻辑
+2. 点击左边每个菜单都会跳转到响应的iframe，所以每个功能菜单下都需要切换到当前iframe
