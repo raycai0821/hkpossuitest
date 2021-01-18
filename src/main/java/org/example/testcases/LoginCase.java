@@ -39,6 +39,7 @@ public class LoginCase extends TestBase {
 //        用title断言是否登录
         Assert.assertEquals(homeObject.getTile(), properties.getProperty("home_title"));
 
+
     }
 
 //    测试登录失败

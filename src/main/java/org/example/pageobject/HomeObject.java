@@ -12,12 +12,7 @@ import org.openqa.selenium.support.PageFactory;
  **/
 public class HomeObject extends TestBase {
 
-    public HomeObject() {
-        PageFactory.initElements(driver,this);
-
-    }
-
-//获取主页title
+//    获取主页title
     public String getTile() {
         HomeFactory homeFactory = new HomeFactory();
         return homeFactory.getTitle();

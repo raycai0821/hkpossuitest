@@ -12,11 +12,6 @@ import org.example.pagefactory.*;
 
 public class LoginObject extends TestBase {
 
-
-    public LoginObject() {
-        PageFactory.initElements(driver,this);
-    }
-
     /**
      * 登录hkposs
      *

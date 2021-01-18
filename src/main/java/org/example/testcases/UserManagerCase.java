@@ -15,11 +15,22 @@ import java.util.Iterator;
  **/
 public class UserManagerCase {
 
+    SystemManagerObject systemManagerObject = new SystemManagerObject();
 
-    @Test(testName = "系统设置-用户管理测试")
+    @Test(testName = "系统设置-获取用户列表测试", priority = 1)
     public void testGetUser() throws InterruptedException {
-        SystemManagerObject systemManagerObject = new SystemManagerObject();
-        Assert.assertNotEquals(systemManagerObject.getUsers().size(),0);
+        Assert.assertNotEquals(systemManagerObject.getUsers().size(), 0, "获取用户列表失败");
     }
 
+    @Test(testName = "使用用户名搜索测试", priority = 2)
+    public void testSearchUserByUsername(){
+        Assert.assertEquals(systemManagerObject.searchByUsername().size(),1,"使用用户名查询失败");
+
+    }
+
+    @Test(testName = "使用手机搜索测试", priority = 3)
+    public void testSearchUserByPhone(){
+        Assert.assertEquals(systemManagerObject.searchByPhone().size(),1,"使用手机号查询失败");
+
+    }
 }

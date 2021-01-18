@@ -3,10 +3,8 @@ package org.example.pageobject.systemmanager;
 import org.example.base.TestBase;
 import org.example.pagefactory.systemmanager.SystemManagerFactory;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author leifeng.cai
@@ -15,18 +13,37 @@ import java.util.Set;
  **/
 public class SystemManagerObject extends TestBase {
 
-    public SystemManagerObject() {
-        PageFactory.initElements(driver, this);
-    }
 
     /**
      * 获取usertable中的数据
-     *
-     * */
+     */
     public List<WebElement> getUsers() throws InterruptedException {
         SystemManagerFactory systemManagerFactory = new SystemManagerFactory();
-        systemManagerFactory.clickSystemManagerbutton();
+        systemManagerFactory.clickSystemManagerButton();
         systemManagerFactory.clickUserManagerButton();
+        return systemManagerFactory.getUserTable();
+    }
+
+    /**
+     * 输入登录名搜索
+     *
+     * */
+    public List<WebElement> searchByUsername() {
+        SystemManagerFactory systemManagerFactory = new SystemManagerFactory();
+        systemManagerFactory.setLogin_name();
+        systemManagerFactory.clickSearchButton();
+        return systemManagerFactory.getUserTable();
+    }
+
+    /**
+     * 输入手机号搜索
+     * */
+    public List<WebElement>  searchByPhone() {
+        SystemManagerFactory systemManagerFactory = new SystemManagerFactory();
+//        清空当前搜索框
+        systemManagerFactory.clickRecoverButton();
+        systemManagerFactory.setPhone();
+        systemManagerFactory.clickSearchButton();
         return systemManagerFactory.getUserTable();
     }
 
