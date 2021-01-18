@@ -130,7 +130,7 @@
                     <configuration>
                         <systemPropertyVariables>
                             <allure.results.directory>
-                                ${project.build.directory}/allure-results/${maven.build.timestamp}
+                                ${project.build.directory}/allure-results/hkposs_test_report
                             </allure.results.directory>
                             <allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
                             <allure.link.tms.pattern>https://example.org/browse/{}</allure.link.tms.pattern>
