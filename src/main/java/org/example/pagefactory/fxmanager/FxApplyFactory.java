@@ -1,20 +1,25 @@
-package org.example.pagefactory.systemmanager;
+package org.example.pagefactory.fxmanager;
 
 import org.example.base.TestBase;
+import org.example.pagefactory.SwitchIframe;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import static org.example.base.TestBase.driver;
 
 /**
  * @author leifeng.cai
  * @description 换汇询价页面
  * @time: 2021/1/18 11:21
  **/
-public class FxApplyFactory extends TestBase {
+public class FxApplyFactory extends TestBase implements SwitchIframe{
 
     public FxApplyFactory() {
         PageFactory.initElements(driver, this);
@@ -68,6 +73,31 @@ public class FxApplyFactory extends TestBase {
 
     public List<WebElement> getMemberTable() {
         return memberTable.findElements(By.tagName("tr"));
+
+    }
+
+    public String getCurrentIframeName(){
+
+        List<WebElement> iframes = driver.findElements(By.tagName("iframe"));
+        String currentIframeName = null;
+        Iterator<WebElement> iterator = iframes.iterator();
+        while(iterator.hasNext()){
+            WebElement iframe = iterator.next();
+            if(iframe.getAttribute("src").equals("/fx/transBatch/add")){
+                currentIframeName = iframe.getAttribute("name");
+                break;
+            }
+        }
+        return currentIframeName;
+    }
+
+    @Override
+    public void switchToCurrentIframe(String iframeName) {
+        driver.switchTo().frame(iframeName);
+    }
+
+    @Override
+    public void switchToTopIframe() {
 
     }
 }

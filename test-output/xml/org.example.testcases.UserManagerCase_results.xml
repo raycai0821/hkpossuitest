@@ -4,12 +4,12 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="3.655">
+           time="3.639">
   <properties />
   
   
-            <testcase name="testSearchUserByPhone" time="0.242" classname="org.example.testcases.UserManagerCase" />
-                <testcase name="testGetUser" time="3.202" classname="org.example.testcases.UserManagerCase" />
-                <testcase name="testSearchUserByUsername" time="0.211" classname="org.example.testcases.UserManagerCase" />
+            <testcase name="testGetUser" time="3.194" classname="org.example.testcases.UserManagerCase" />
+                <testcase name="testSearchUserByPhone" time="0.247" classname="org.example.testcases.UserManagerCase" />
+                <testcase name="testSearchUserByUsername" time="0.198" classname="org.example.testcases.UserManagerCase" />
       
 </testsuite>
