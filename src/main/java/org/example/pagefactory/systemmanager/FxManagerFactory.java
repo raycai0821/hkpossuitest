@@ -34,10 +34,11 @@ public class FxManagerFactory extends TestBase {
 
     }
 
-//    点击换汇申请按钮并且切换道歉iframe
+    //点击换汇申请按钮并且切换道歉iframe
     @FindBy(xpath = "//*[@id=\"toolbar\"]/a")
     WebElement createFxButton;
-    public void clickCreateFxButton(){
+
+    public void clickCreateFxButton() {
         createFxButton.click();
         driver.switchTo().frame("iframe99");
     }

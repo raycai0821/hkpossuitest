@@ -11,7 +11,7 @@ import java.util.List;
  * @description 系统管理
  * @time: 2021/1/14 17:31
  **/
-public class SystemManagerObject extends TestBase {
+public class SystemManagerObject {
 
 
     /**
