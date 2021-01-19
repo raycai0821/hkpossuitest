@@ -17,7 +17,7 @@ public class FxManagerFactory extends TestBase {
     }
 
     //点击汇兑管理
-    @FindBy(xpath = "//*[@id=\"side-menu\"]/li[9]/a")
+    @FindBy(xpath = "//*[@id=\"side-menu\"]/li[10]/a")
     WebElement FxManagerButton;
 
     public void clickFxManagerButton() {
@@ -25,13 +25,12 @@ public class FxManagerFactory extends TestBase {
     }
 
     //点击汇兑申请并且到当前iframe
-    @FindBy(xpath = "//*[@id=\"side-menu\"]/li[9]/ul/li[1]/a")
+    @FindBy(xpath = "//*[@id=\"side-menu\"]/li[10]/ul/li[1]/a")
     WebElement FxApplyButton;
-
 
     public void clickFxApplyButton() {
         FxApplyButton.click();
-        driver.switchTo().frame("iframe38");
+        driver.switchTo().frame("iframe42");
     }
 
     //点击换汇申请按钮并且切换当前iframe

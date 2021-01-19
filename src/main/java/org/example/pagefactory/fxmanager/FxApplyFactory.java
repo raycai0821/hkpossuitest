@@ -1,13 +1,16 @@
 package org.example.pagefactory.fxmanager;
 
 import org.example.base.TestBase;
-import org.example.utiles.IframeFinder;
+import org.example.utiles.DirectionEnum;
+import org.example.utiles.LocaterHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import javax.xml.xpath.XPath;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -43,13 +46,11 @@ public class FxApplyFactory extends TestBase {
     }
 
     //汇兑组选择框
-    @FindBy( xpath = "//*[@id=\"groupId\"]")
+    @FindBy(xpath = "//*[@id=\"groupId\"]")
     WebElement fxGroup;
 
     public void selectFxGroup() {
         Select select = new Select(fxGroup);
-
-        System.out.println("所有选项" + select.getOptions());
         select.selectByVisibleText(properties.getProperty("fxGroup"));
     }
 
@@ -57,7 +58,7 @@ public class FxApplyFactory extends TestBase {
     @FindBy(xpath = "//*[@id=\"memberInfo\"]")
     WebElement member;
 
-    public void selectMember() throws InterruptedException {
+    public void clickMember() throws InterruptedException {
         member.click();
         Thread.sleep(1000);
 
@@ -72,7 +73,52 @@ public class FxApplyFactory extends TestBase {
 
     }
 
-    public void switchToCurrentIframe() throws InterruptedException {
-        driver.switchTo().frame(IframeFinder.getIframeBySrc(("/fx/transBatch/add"),driver));
+    //金额输入框
+    @FindBy(className = "input-sm")
+    WebElement amountInputBox;
+
+    public void sendInputAmount(String amount) {
+        amountInputBox.sendKeys(amount);
+
     }
+
+    //金额确认按钮
+    @FindBy(className = "glyphicon-ok")
+    WebElement inputConfirmButton;
+    public void clickInputConfirmButton(){
+        inputConfirmButton.click();
+    }
+
+    //交割方式
+    @FindBy(xpath = "//*[@id=\"form1\"]/div/ul/li[1]/select")
+    WebElement conversionType;
+    public void selectConversionType(String type){
+        Select select = new Select(conversionType);
+        select.selectByValue(type);
+    }
+
+    //交易附言
+    @FindBy(xpath = "//*[@id=\"form1\"]/div/ul/li[2]/textarea")
+    WebElement reference;
+    public void inputReference(String text){
+        reference.sendKeys(text);
+    }
+
+    //提交询价
+    @FindBy(xpath = "/html/body/div/section[3]/div/a")
+    WebElement submitButton;
+    public void clickSubmitButton(){
+        submitButton.click();
+    }
+
+    //是否询价确认框
+    @FindBy(className = "layui-layer-btn0")
+    WebElement conversionConfirmPopup;
+    public void clickConversionConfirmPopup(){
+        conversionConfirmPopup.click();
+    }
+
+
+
+
 }
