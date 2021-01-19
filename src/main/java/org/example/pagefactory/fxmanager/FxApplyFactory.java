@@ -1,27 +1,23 @@
 package org.example.pagefactory.fxmanager;
 
 import org.example.base.TestBase;
-import org.example.pagefactory.SwitchIframe;
+import org.example.utiles.IframeFinder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import static org.example.base.TestBase.driver;
 
 /**
  * @author leifeng.cai
  * @description 换汇询价页面
  * @time: 2021/1/18 11:21
  **/
-public class FxApplyFactory extends TestBase implements SwitchIframe{
+public class FxApplyFactory extends TestBase {
 
-    public FxApplyFactory() {
+    public FxApplyFactory() throws InterruptedException {
         PageFactory.initElements(driver, this);
     }
 
@@ -31,7 +27,6 @@ public class FxApplyFactory extends TestBase implements SwitchIframe{
 
     //选中cny
     public void selectOriginCurrency() {
-
         Select select = new Select(originCurrency);
         select.selectByValue(properties.getProperty("originCurrency"));
     }
@@ -39,17 +34,16 @@ public class FxApplyFactory extends TestBase implements SwitchIframe{
 
     //目标币种选择框
     @FindBy(xpath = "//*[@id=\"targetCur\"]")
-    WebElement targeCurrency;
+    WebElement targetCurrency;
 
     //选中USD
-    public void selectTargeCurrency() {
-
-        Select select = new Select(targeCurrency);
-        select.selectByValue(properties.getProperty("targeCurrency"));
+    public void selectTargetCurrency() {
+        Select select = new Select(targetCurrency);
+        select.selectByValue(properties.getProperty("targetCurrency"));
     }
 
     //汇兑组选择框
-    @FindBy(xpath = "//*[@id=\"groupId\"]")
+    @FindBy( xpath = "//*[@id=\"groupId\"]")
     WebElement fxGroup;
 
     public void selectFxGroup() {
@@ -76,28 +70,7 @@ public class FxApplyFactory extends TestBase implements SwitchIframe{
 
     }
 
-    public String getCurrentIframeName(){
-
-        List<WebElement> iframes = driver.findElements(By.tagName("iframe"));
-        String currentIframeName = null;
-        Iterator<WebElement> iterator = iframes.iterator();
-        while(iterator.hasNext()){
-            WebElement iframe = iterator.next();
-            if(iframe.getAttribute("src").equals("/fx/transBatch/add")){
-                currentIframeName = iframe.getAttribute("name");
-                break;
-            }
-        }
-        return currentIframeName;
-    }
-
-    @Override
-    public void switchToCurrentIframe(String iframeName) {
-        driver.switchTo().frame(iframeName);
-    }
-
-    @Override
-    public void switchToTopIframe() {
-
+    public void switchToCurrentIframe() throws InterruptedException {
+        driver.switchTo().frame(IframeFinder.getIframeBySrc(("/fx/transBatch/add"),driver));
     }
 }

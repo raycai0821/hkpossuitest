@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +32,7 @@ public class TestBase {
             //读取配置文件
             FileInputStream inputStream = new FileInputStream(
                     "src\\resources\\config.properties");
-            properties.load(inputStream);
+            properties.load(new InputStreamReader(inputStream,"UTF-8"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

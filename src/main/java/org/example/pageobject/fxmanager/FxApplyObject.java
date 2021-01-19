@@ -15,20 +15,19 @@ public class FxApplyObject {
         FxManagerFactory fxManagerFactory = new FxManagerFactory();
         FxApplyFactory fxApplyFactory = new FxApplyFactory();
 
-//        进入汇兑申请
+        //进入汇兑申请
         fxManagerFactory.clickFxManagerButton();
         fxManagerFactory.clickFxApplyButton();
-        fxManagerFactory.getAllFrames();
-
-////        进入换汇询价
-//        fxManagerFactory.clickCreateFxButton();
-//
-////        输入询价条件
-//        fxApplyFactory.selectOriginCurrency();
-//        fxApplyFactory.selectTargeCurrency();
-//        fxApplyFactory.selectFxGroup();
-//        fxApplyFactory.selectMember();
-//        System.out.println("=====获取到" + fxApplyFactory.getMemberTable().get(0).getText());
+        //进入换汇询价
+        fxManagerFactory.clickCreateFxButton();
+        //切到当前iframe
+        fxApplyFactory.switchToCurrentIframe();
+        //输入询价条件
+        fxApplyFactory.selectOriginCurrency();
+        fxApplyFactory.selectTargetCurrency();
+        fxApplyFactory.selectFxGroup();
+        fxApplyFactory.selectMember();
+        System.out.println("=====获取到" + fxApplyFactory.getMemberTable().get(0).getText());
 
     }
 
