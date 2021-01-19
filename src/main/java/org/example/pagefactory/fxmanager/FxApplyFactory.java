@@ -48,7 +48,9 @@ public class FxApplyFactory extends TestBase {
 
     public void selectFxGroup() {
         Select select = new Select(fxGroup);
-        select.selectByValue(properties.getProperty("fxGroup"));
+
+        System.out.println("所有选项" + select.getOptions());
+        select.selectByVisibleText(properties.getProperty("fxGroup"));
     }
 
     //会员选择框
